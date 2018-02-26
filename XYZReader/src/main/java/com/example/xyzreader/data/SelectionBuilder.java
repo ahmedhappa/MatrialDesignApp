@@ -103,7 +103,7 @@ public class SelectionBuilder {
 
     private void ensureProjectionMap() {
 		if (mProjectionMap == null) {
-			mProjectionMap = new HashMap<String, String>();
+			mProjectionMap = new HashMap<>();
 		}
     }
 
@@ -115,21 +115,10 @@ public class SelectionBuilder {
 
     private void ensureSelectionArgs() {
     	if (mSelectionArgs == null) {
-    		mSelectionArgs = new ArrayList<String>();
+    		mSelectionArgs = new ArrayList<>();
     	}
     }
 
-    public SelectionBuilder mapToTable(String column, String table) {
-    	ensureProjectionMap();
-        mProjectionMap.put(column, table + "." + column);
-        return this;
-    }
-
-    public SelectionBuilder map(String fromColumn, String toClause) {
-    	ensureProjectionMap();
-        mProjectionMap.put(fromColumn, toClause + " AS " + fromColumn);
-        return this;
-    }
 
     /**
      * Return selection string for current internal state.
